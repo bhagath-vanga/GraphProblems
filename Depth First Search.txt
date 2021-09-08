@@ -1,0 +1,31 @@
+Time Complexity : O(V+E)
+Space Complexity : O(V)
+
+class Solution
+{
+    //Function to return a list containing the DFS traversal of the graph.
+    public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        // Code here
+        ArrayList<Integer> storeDfs = new ArrayList<>();
+        boolean vis[]=new boolean[V];
+        
+        for(int i=0;i<V;i++){
+            if(vis[i]==false){
+                dfs(i,V,adj,vis,storeDfs);
+            }
+        }
+    return storeDfs;
+    }
+    
+    public void dfs(int node,int V,ArrayList<ArrayList<Integer>> adj,boolean vis[],ArrayList<Integer> storeDfs){
+        storeDfs.add(node);
+        vis[node]=true;
+        
+        for(Integer it: adj.get(node)){
+            if(vis[it]==false){
+                dfs(it,V,adj,vis,storeDfs);
+            }
+        }
+    }
+}
